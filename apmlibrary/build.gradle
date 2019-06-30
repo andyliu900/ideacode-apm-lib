@@ -1,0 +1,88 @@
+apply plugin: 'com.android.library'
+apply from: "sdk_util.gradle"
+apply plugin: 'maven'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode APMSDK_VERSION_CODE
+        versionName APMSDK_VERSION_NAME
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        // 改参数一般用来调试数据库，数据库生成在sdcard方便调试
+        buildConfigField "boolean", "DB_IN_SDCARD", "false"
+        // SDK的版本号
+        buildConfigField "String", "VERSION", "\"${APMSDK_VERSION_NAME}\""
+        // APM数据库
+        buildConfigField "String", "APM_DATABASE_NAME", "\"${APM_DATABASE_NAME}\""
+
+        // 设置sql操作输出路径
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            zipAlignEnabled false
+//            consumerProguardFiles 'ideacode-apm-main.pro'
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'ideacode-apm-main.pro'
+        }
+
+        release {
+            minifyEnabled false
+            zipAlignEnabled false
+//            consumerProguardFiles 'ideacode-apm-main.pro'
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'ideacode-apm-main.pro'
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    useLibrary 'org.apache.http.legacy'
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'com.squareup.okhttp3:okhttp:3.7.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.7.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava:2.3.0'
+    implementation 'io.reactivex:rxjava:1.2.1'
+    implementation 'io.reactivex:rxandroid:1.2.1'
+    implementation 'androidx.room:room-runtime:2.0.0-rc01'
+    annotationProcessor "androidx.room:room-compiler:2.0.0-rc01"
+}
+
+uploadArchives {
+    repositories.mavenDeployer {
+        def deployPath = file(project.GITHUB_REPO_PATH)
+        repository(url: "file://${deployPath.absolutePath}")
+        pom.project {
+            groupId project.PUBLISH_GROUP_ID
+            artifactId project.PUBLISH_ARTIFACT_ID
+            version project.PUBLISH_VERSION
+        }
+    }
+}
+repositories {
+    mavenCentral()
+}

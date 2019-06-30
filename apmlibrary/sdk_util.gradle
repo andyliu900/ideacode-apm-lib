@@ -1,0 +1,32 @@
+ext {
+    APMSDK_VERSION_CODE = 1
+    APMSDK_VERSION_NAME = "1.0.1.5"
+
+    getDirSuffix = this.&getDirSuffix
+    APM_TASKS_GROUP = "IDEACODE-APM"
+
+    APM_DATABASE_NAME = "ideacode_apm_records.db"
+
+    GITHUB_REPO_PATH = "/Users/randysu/GitLab/viomi_sdk"       //这里指定的就是刚刚新建项目后clone下来的在本地的路径
+    PUBLISH_GROUP_ID = 'com.ideacode.apm'
+    PUBLISH_ARTIFACT_ID = 'ideacode-apm-lib'
+    PUBLISH_VERSION = APMSDK_VERSION_NAME
+}
+
+String getDirSuffix() {
+    String suffix = APMSDK_VERSION_CODE + "-[" + getTime() + "]"
+    return suffix.replaceAll("\"", "")
+}
+
+String getTime() {
+    Calendar calendar = Calendar.getInstance()
+    StringBuilder sb = new StringBuilder()
+    sb.append(calendar.get(Calendar.YEAR) + "-")
+    sb.append(calendar.get(Calendar.MONTH) + "-")
+    sb.append(calendar.get(Calendar.MONDAY) + " ")
+    sb.append(calendar.get(Calendar.HOUR_OF_DAY) + ":")
+    sb.append(calendar.get(Calendar.MINUTE) + ":")
+    sb.append(calendar.get(Calendar.MILLISECOND))
+
+    return sb.toString()
+}

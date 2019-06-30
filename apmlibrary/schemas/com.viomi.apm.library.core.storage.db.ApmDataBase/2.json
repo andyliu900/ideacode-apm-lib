@@ -1,0 +1,783 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 2,
+    "identityHash": "fa2a60063412310810caab8d02abd75b",
+    "entities": [
+      {
+        "tableName": "activity_info",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`activity_name` TEXT, `startType` INTEGER NOT NULL, `time` INTEGER NOT NULL, `life_cycle` INTEGER NOT NULL, `life_cycle_str` TEXT, `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `extend` TEXT, `sn` TEXT, `mac` TEXT, `app_name` TEXT, `app_version` INTEGER NOT NULL, `apm_sdk_version` TEXT, `process_name` TEXT, `thread_id` INTEGER NOT NULL, `thread_name` TEXT, `is_upload` INTEGER NOT NULL, `create_time` INTEGER)",
+        "fields": [
+          {
+            "fieldPath": "activityName",
+            "columnName": "activity_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "startType",
+            "columnName": "startType",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "time",
+            "columnName": "time",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lifeCycle",
+            "columnName": "life_cycle",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lifeCycleStr",
+            "columnName": "life_cycle_str",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "extend",
+            "columnName": "extend",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "sn",
+            "columnName": "sn",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "mac",
+            "columnName": "mac",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "appName",
+            "columnName": "app_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "appVersion",
+            "columnName": "app_version",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "apmSdkVersion",
+            "columnName": "apm_sdk_version",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "processName",
+            "columnName": "process_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "theadId",
+            "columnName": "thread_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "threadName",
+            "columnName": "thread_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "isUploaded",
+            "columnName": "is_upload",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createTime",
+            "columnName": "create_time",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "appstart_info",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`start_time` INTEGER NOT NULL, `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `extend` TEXT, `sn` TEXT, `mac` TEXT, `app_name` TEXT, `app_version` INTEGER NOT NULL, `apm_sdk_version` TEXT, `process_name` TEXT, `thread_id` INTEGER NOT NULL, `thread_name` TEXT, `is_upload` INTEGER NOT NULL, `create_time` INTEGER)",
+        "fields": [
+          {
+            "fieldPath": "startTime",
+            "columnName": "start_time",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "extend",
+            "columnName": "extend",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "sn",
+            "columnName": "sn",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "mac",
+            "columnName": "mac",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "appName",
+            "columnName": "app_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "appVersion",
+            "columnName": "app_version",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "apmSdkVersion",
+            "columnName": "apm_sdk_version",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "processName",
+            "columnName": "process_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "theadId",
+            "columnName": "thread_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "threadName",
+            "columnName": "thread_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "isUploaded",
+            "columnName": "is_upload",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createTime",
+            "columnName": "create_time",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "process_info",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`start_count` INTEGER NOT NULL, `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `extend` TEXT, `sn` TEXT, `mac` TEXT, `app_name` TEXT, `app_version` INTEGER NOT NULL, `apm_sdk_version` TEXT, `process_name` TEXT, `thread_id` INTEGER NOT NULL, `thread_name` TEXT, `is_upload` INTEGER NOT NULL, `create_time` INTEGER)",
+        "fields": [
+          {
+            "fieldPath": "startCount",
+            "columnName": "start_count",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "extend",
+            "columnName": "extend",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "sn",
+            "columnName": "sn",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "mac",
+            "columnName": "mac",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "appName",
+            "columnName": "app_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "appVersion",
+            "columnName": "app_version",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "apmSdkVersion",
+            "columnName": "apm_sdk_version",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "processName",
+            "columnName": "process_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "theadId",
+            "columnName": "thread_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "threadName",
+            "columnName": "thread_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "isUploaded",
+            "columnName": "is_upload",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createTime",
+            "columnName": "create_time",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "memory_info",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`current_used_mem` INTEGER NOT NULL, `total_mem` INTEGER NOT NULL, `dalvik_pss` INTEGER NOT NULL, `native_pss` INTEGER NOT NULL, `other_pss` INTEGER NOT NULL, `total_pss` INTEGER NOT NULL, `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `extend` TEXT, `sn` TEXT, `mac` TEXT, `app_name` TEXT, `app_version` INTEGER NOT NULL, `apm_sdk_version` TEXT, `process_name` TEXT, `thread_id` INTEGER NOT NULL, `thread_name` TEXT, `is_upload` INTEGER NOT NULL, `create_time` INTEGER)",
+        "fields": [
+          {
+            "fieldPath": "currentUsedMem",
+            "columnName": "current_used_mem",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "totalMem",
+            "columnName": "total_mem",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "dalvikPss",
+            "columnName": "dalvik_pss",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nativePss",
+            "columnName": "native_pss",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "otherPss",
+            "columnName": "other_pss",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "totalPss",
+            "columnName": "total_pss",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "extend",
+            "columnName": "extend",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "sn",
+            "columnName": "sn",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "mac",
+            "columnName": "mac",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "appName",
+            "columnName": "app_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "appVersion",
+            "columnName": "app_version",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "apmSdkVersion",
+            "columnName": "apm_sdk_version",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "processName",
+            "columnName": "process_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "theadId",
+            "columnName": "thread_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "threadName",
+            "columnName": "thread_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "isUploaded",
+            "columnName": "is_upload",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createTime",
+            "columnName": "create_time",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "block_info",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`block_stack` TEXT, `block_time` INTEGER NOT NULL, `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `extend` TEXT, `sn` TEXT, `mac` TEXT, `app_name` TEXT, `app_version` INTEGER NOT NULL, `apm_sdk_version` TEXT, `process_name` TEXT, `thread_id` INTEGER NOT NULL, `thread_name` TEXT, `is_upload` INTEGER NOT NULL, `create_time` INTEGER)",
+        "fields": [
+          {
+            "fieldPath": "blockStack",
+            "columnName": "block_stack",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "blockTime",
+            "columnName": "block_time",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "extend",
+            "columnName": "extend",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "sn",
+            "columnName": "sn",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "mac",
+            "columnName": "mac",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "appName",
+            "columnName": "app_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "appVersion",
+            "columnName": "app_version",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "apmSdkVersion",
+            "columnName": "apm_sdk_version",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "processName",
+            "columnName": "process_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "theadId",
+            "columnName": "thread_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "threadName",
+            "columnName": "thread_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "isUploaded",
+            "columnName": "is_upload",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createTime",
+            "columnName": "create_time",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "fps_info",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`activity_name` TEXT, `fps` INTEGER NOT NULL, `stack` TEXT, `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `extend` TEXT, `sn` TEXT, `mac` TEXT, `app_name` TEXT, `app_version` INTEGER NOT NULL, `apm_sdk_version` TEXT, `process_name` TEXT, `thread_id` INTEGER NOT NULL, `thread_name` TEXT, `is_upload` INTEGER NOT NULL, `create_time` INTEGER)",
+        "fields": [
+          {
+            "fieldPath": "activityName",
+            "columnName": "activity_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "fps",
+            "columnName": "fps",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "stack",
+            "columnName": "stack",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "extend",
+            "columnName": "extend",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "sn",
+            "columnName": "sn",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "mac",
+            "columnName": "mac",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "appName",
+            "columnName": "app_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "appVersion",
+            "columnName": "app_version",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "apmSdkVersion",
+            "columnName": "apm_sdk_version",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "processName",
+            "columnName": "process_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "theadId",
+            "columnName": "thread_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "threadName",
+            "columnName": "thread_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "isUploaded",
+            "columnName": "is_upload",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createTime",
+            "columnName": "create_time",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "net_info",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`url` TEXT, `headers` TEXT, `method` TEXT, `sent_bytes` INTEGER NOT NULL, `received_bytes` INTEGER NOT NULL, `start_time` INTEGER, `cost_time` INTEGER NOT NULL, `is_wifi` INTEGER NOT NULL, `status_code` INTEGER NOT NULL, `error_message` TEXT, `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `extend` TEXT, `sn` TEXT, `mac` TEXT, `app_name` TEXT, `app_version` INTEGER NOT NULL, `apm_sdk_version` TEXT, `process_name` TEXT, `thread_id` INTEGER NOT NULL, `thread_name` TEXT, `is_upload` INTEGER NOT NULL, `create_time` INTEGER)",
+        "fields": [
+          {
+            "fieldPath": "url",
+            "columnName": "url",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "headers",
+            "columnName": "headers",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "method",
+            "columnName": "method",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "sentBytes",
+            "columnName": "sent_bytes",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "receivedBytes",
+            "columnName": "received_bytes",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "startTime",
+            "columnName": "start_time",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "costTime",
+            "columnName": "cost_time",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isWifi",
+            "columnName": "is_wifi",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "statusCode",
+            "columnName": "status_code",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "errorMessage",
+            "columnName": "error_message",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "extend",
+            "columnName": "extend",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "sn",
+            "columnName": "sn",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "mac",
+            "columnName": "mac",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "appName",
+            "columnName": "app_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "appVersion",
+            "columnName": "app_version",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "apmSdkVersion",
+            "columnName": "apm_sdk_version",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "processName",
+            "columnName": "process_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "theadId",
+            "columnName": "thread_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "threadName",
+            "columnName": "thread_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "isUploaded",
+            "columnName": "is_upload",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createTime",
+            "columnName": "create_time",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"fa2a60063412310810caab8d02abd75b\")"
+    ]
+  }
+}
